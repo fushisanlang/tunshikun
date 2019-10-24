@@ -27,10 +27,10 @@ setex () {
 
 
 addex () {
-    oldex=`get_ex`
+    oldex=`getex`
     if [[ ${oldex} -eq 99 ]]; then
         setex 0
-        oldlv=`get_lv`
+        oldlv=`getlv`
         let newlv=${oldlv}+1
         setlv ${newlv}
     else
