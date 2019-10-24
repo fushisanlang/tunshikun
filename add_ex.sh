@@ -2,11 +2,11 @@
 
 #用来后台计算经验，自动增加经验,自动升级
 
-funcfile='./222.sh'
-
-use_func () {
-    sh ${funcfile} ${1}
-}
+#定义数据文件
+datadir='./datadir/'
+experiencefile=${datadir}experience.file
+attributefile=${datadir}attribute.file
+levelfile=${datadir}level.file
 
 piddir='./piddir/'
 expidfile=${piddir}ex.pid
@@ -27,15 +27,15 @@ setex () {
 
 
 addex () {
-    oldex=`use_func get_ex`
+    oldex=`get_ex`
     if [[ ${oldex} -eq 99 ]]; then
-        use_func setex 0
-        oldlv=`use_func get_lv`
+        setex 0
+        oldlv=`get_lv`
         let newlv=${oldlv}+1
-        use_func setlv ${newlv}
+        setlv ${newlv}
     else
         let newex=${oldex}+1
-        use_func setex ${newex}
+        setex ${newex}
     fi
 }
 
