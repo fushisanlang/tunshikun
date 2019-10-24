@@ -3,7 +3,7 @@
 datafile='./datafile'
 
 #定义数据文件
-datadir='./datadir'
+datadir='./datadir/'
 Experiencefile=${datadir}Experience.file
 Attributefile=${datadir}Attribute.file
 Levelfile=${datadir}Level.file
