@@ -4,9 +4,9 @@ datafile='./datafile'
 
 #定义数据文件
 datadir='./datadir/'
-Experiencefile=${datadir}Experience.file
-Attributefile=${datadir}Attribute.file
-Levelfile=${datadir}Level.file
+experiencefile=${datadir}experience.file
+attributefile=${datadir}attribute.file
+levelfile=${datadir}level.file
 
 #定义属性数组
 E=('亢金龙' '角木蛟' '箕水豹' '房日兔' '心月狐' '尾火虎' '氐土貉')
@@ -16,25 +16,25 @@ N=('牛金牛' '斗木獬' '壁水貐' '虚日鼠' '危月燕' '室火猪' '女�
 
 
 #定义输出颜色
-function echo_red () {
+echo_red () {
     echo -e "\033[0;31m ${1} \033[0m"
 }
-function echo_green () {
+echo_green () {
     echo -e "\033[0;32m ${1} \033[0m"
 }
-function echo_yellow () {
+echo_yellow () {
     echo -e "\033[0;33m ${1} \033[0m"
 }
 
 #安装依赖
-function install_lib () {
+install_lib () {
     #输出
     yum install stty figlet
     #输出
 }
 
 #检查窗口大小
-function get_ttysize () {
+get_ttysize () {
     tty_h=`stty size| awk '{print $1}'`
     tty_w=`stty size| awk '{print $2}'`
     if [[ ${tty_h} -lt 30  ]]; then
@@ -49,7 +49,7 @@ function get_ttysize () {
     fi
 }
 
-function start_page () {
+start_page () {
     clear
     echo -e "\033[33;33;5m"
     figlet 'tunshi  KUN'
@@ -67,7 +67,7 @@ function start_page () {
 
 }
 
-function select_lanage () {
+select_lanage () {
     clear
     echo '1. English'
     echo '2. 中文'
@@ -76,20 +76,20 @@ function select_lanage () {
     sleep 3
 }
 
-function getlv () {
-    cat ${Levelfile}
+getlv () {
+    cat ${levelfile}
 }
-function setlv () {
-    echo ${1} > ${Levelfile} 
+setlv () {
+    echo ${1} > ${levelfile} 
 }
-function getex () {
-    cat ${Experiencefile}
+getex () {
+    cat ${experiencefile}
 }
-function setex () {
-    echo ${1} > ${Experiencefile} 
+setex () {
+    echo ${1} > ${experiencefile} 
 }
 
-function get_new_kun () {
+get_new_kun () {
     let NUM=${2}-1
     case $1 in
         1 )
@@ -103,7 +103,7 @@ function get_new_kun () {
     esac
 }
 
-function stage_1 () {
+stage_1 () {
     clear
     echo '你现在有一颗鲲蛋，你想在什么地方孵化？'
     echo '1.东胜神洲'
@@ -139,7 +139,7 @@ function stage_1 () {
     echo '开始吞噬之路吧.'
 
 }
-function get_info () {
+get_info () {
     clear
     echo '采用五行相生相克的思路。'
     echo '日为特殊火属性，被木生，不被水克。月为特殊水属性，被金生，不被土克。'
@@ -151,14 +151,19 @@ function get_info () {
     echo '吞噬失败，可以选择掉级或丧失1条属性。'  
 }
 
-function get_random () {
+get_random () {
     A=`date +%s`
     expr ${A} % ${1}
 }
 
-function get_enemy () {
+get_enemy () {
     echo 
 }
 
+print_stage () {
+    clear
+    echo "现在是北京时间` date +%F\ %H:%M:%S`."
+    echo "少侠的鲲目前是lv.`getlv`, `getex`%经验。"
+}
 
 ${1}

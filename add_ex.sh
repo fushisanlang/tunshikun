@@ -4,32 +4,32 @@
 
 funcfile='./222.sh'
 
-function use_func () {
+use_func () {
     sh ${funcfile} ${1}
 }
 
 piddir='./piddir/'
-Expidfile=${piddir}Ex.pid
+expidfile=${piddir}ex.pid
 
-function add_ex () {
-    OLDex=`use_func get_ex`
-    if [[ ${OLDex} -eq 99 ]]; then
+add_ex () {
+    oldex=`use_func get_ex`
+    if [[ ${oldex} -eq 99 ]]; then
         use_func setex 0
-        OLDlv=`use_func get_lv`
-        let NEWlv=${OLDlv}+1
-        use_func setlv ${NEWlv}
+        oldlv=`use_func get_lv`
+        let newlv=${oldlv}+1
+        use_func setlv ${newlv}
     else
-        let NEWex=${OLDex}+1
-        use_func setex ${NEWex}
+        let newex=${oldex}+1
+        use_func setex ${newex}
     fi
 }
 
-function main () {
+main () {
 for (( i = 1; i > 0; i++ )); do
     add_ex
     sleep 1
 done
 }
 
-echo ${$} > ${Expidfile}
+echo ${$} > ${expidfile}
 main
