@@ -9,12 +9,17 @@ levelfile=${datadir}level.file
 
 
 addexfile='./add_ex.sh'
-
+closefile='./close.sh'
 
 piddir='./piddir/'
 expidfile=${piddir}ex.pid
 
-mkdir -p ${datadir} ${piddir}
+clear_data () {
+    rm -fr ${datadir} ${piddir}
+    mkdir -p ${datadir} ${piddir}
+    > ${datafile}
+}
+
 
 #定义属性数组
 E=('亢金龙' '角木蛟' '箕水豹' '房日兔' '心月狐' '尾火虎' '氐土貉')
@@ -176,11 +181,10 @@ print_stage () {
 }
 
 
-
-
 main () {
+    clear_data
     sh ${addexfile} &
-    > ${datafile}
+    sh ${closefile} &
     get_ttysize
     start_page
 #    select_lanage
