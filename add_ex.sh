@@ -2,8 +2,10 @@
 
 #用来后台计算经验，自动增加经验,自动升级
 
+funcfile='./222.sh'
+
 function use_func () {
-    sh ./222.sh ${1}
+    sh ${funcfile} ${1}
 }
 
 piddir='./piddir/'
