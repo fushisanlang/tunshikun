@@ -11,7 +11,22 @@ use_func () {
 piddir='./piddir/'
 expidfile=${piddir}ex.pid
 
-add_ex () {
+getlv () {
+    cat ${levelfile}
+}
+setlv () {
+    echo ${1} > ${levelfile} 
+}
+getex () {
+    cat ${experiencefile}
+}
+setex () {
+    echo ${1} > ${experiencefile} 
+}
+
+
+
+addex () {
     oldex=`use_func get_ex`
     if [[ ${oldex} -eq 99 ]]; then
         use_func setex 0
@@ -26,7 +41,7 @@ add_ex () {
 
 main () {
 for (( i = 1; i > 0; i++ )); do
-    add_ex
+    addex
     sleep 1
 done
 }
