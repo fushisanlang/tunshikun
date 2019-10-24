@@ -172,19 +172,23 @@ print_stage () {
     clear
     echo "现在是北京时间` date +%F\ %H:%M:%S`."
     echo "少侠的鲲目前是lv.`getlv`, `getex`%经验。"
+    sleep 1
 }
 
 
 
 
 main () {
-	sh ${addexfile} &
+    sh ${addexfile} &
     > ${datafile}
     get_ttysize
     start_page
 #    select_lanage
     stage_1
-    print_stage
+    for (( i = 2; i > 1; i++ )); do
+        print_stage
+    done
+    
 }
 
 main
