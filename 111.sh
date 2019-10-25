@@ -183,12 +183,12 @@ print_stage () {
 
 main () {
     clear_data
-    sh ${addexfile} &
-    sh ${closefile} &
+    sh ${closefile} > /dev/null &
     get_ttysize
     start_page
 #    select_lanage
     stage_1
+    sh ${addexfile} > /dev/null &
     for (( i = 2; i > 1; i++ )); do
         print_stage
     done
