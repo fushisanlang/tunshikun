@@ -5,5 +5,9 @@ import (
 ) 
 
 func redprint(note string) {
-	fmt.Printf("\n %c[1;40;32m%s%c[0m\n\n", 0x1B, "testPrintColor", 0x1B)
+	fmt.Printf("\n 0x1B[1;40;32m note 0x1B[0m\n\n")
+}
+
+func main() {
+	redprint('asd')
 }
